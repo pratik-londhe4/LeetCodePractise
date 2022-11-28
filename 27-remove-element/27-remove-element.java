@@ -7,9 +7,7 @@ class Solution {
         
         while(left >= 0){
             if(nums[left] == val){
-                int temp = nums[left];
-                nums[left] = nums[right];
-                nums[right] = temp;
+              swap(nums,left,right);                
                 left--;
                 right--;
                 result--;
@@ -20,5 +18,11 @@ class Solution {
         }
         return result;
         
+    }
+    
+    public void swap(int[] arr , int i , int j){
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 }
