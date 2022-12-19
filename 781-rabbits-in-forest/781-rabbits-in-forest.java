@@ -1,24 +1,20 @@
 class Solution {
     public int numRabbits(int[] answers) {
-      int[] freq = new int[1001];
-        
-        for(int i : answers){
-            freq[i]++;
-        }
-        
-        int minimum = 0;
-        for(int i = 0 ; i < freq.length ; i++){
-            minimum+=closest(i+1 , freq[i]);
-        }
-        return minimum;
+      HashMap<Integer , Integer> hm = new HashMap();
+
+		for(int val : answers){
+			hm.put(val , hm.getOrDefault(val,0)+1);
+		}
+
+		int min = 0;
+		for(int key : hm.keySet()){
+			int group_size = key+1;
+			int reportees = hm.get(key);
+			int groups = (int)Math.ceil(reportees * 1.0 / group_size * 1.0);
+			min+=groups * group_size;
+		}
+		return min;
         
     }
     
-    public int closest(int key , int value){
-        while(value%key != 0){
-            value++;
-        }
-        
-        return value;
-    }
 }
