@@ -10,7 +10,6 @@ class Solution {
         for(int i = 0 ; i < freq.length ; i++){
             minimum+=closest(i+1 , freq[i]);
         }
-        
         return minimum;
         
     }
