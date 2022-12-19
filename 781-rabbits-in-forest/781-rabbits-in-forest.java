@@ -1,15 +1,16 @@
 class Solution {
     public int numRabbits(int[] answers) {
-       HashMap<Integer,Integer> hm = new HashMap();
+      int[] freq = new int[1001];
         
-        for(int i = 0 ; i< answers.length ; i++){
-            hm.put(answers[i] , hm.getOrDefault(answers[i] , 0)+1);
+        for(int i : answers){
+            freq[i]++;
         }
+        
         int minimum = 0;
-        
-        for(int i : hm.keySet()){
-            minimum+=closest(i+1 , hm.get(i));
+        for(int i = 0 ; i < freq.length ; i++){
+            minimum+=closest(i+1 , freq[i]);
         }
+        
         return minimum;
         
     }
