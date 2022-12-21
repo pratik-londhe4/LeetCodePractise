@@ -16,14 +16,13 @@ class Solution {
         ListNode slow = dummy;
         ListNode fast = dummy;
         
-      for(int i = 0 ; i < n + 1 ; i++){
-          fast = fast.next;
-          
-      }
-        
+    
+        int i = 0;
         while(fast != null){
             fast = fast.next;
+            if(i > n)
             slow = slow.next;
+            i++;
         }
         
         slow.next = slow.next.next;
