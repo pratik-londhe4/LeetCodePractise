@@ -1,10 +1,12 @@
 class Solution {
     public String reorganizeString(String s) {
         
+        int n = s.length();
+        
         
         //create map for character and frequncy;
         HashMap<Character,Integer> hm = new HashMap();
-        for(int i = 0 ; i < s.length() ; i++){
+        for(int i = 0 ; i < n ; i++){
             char c = s.charAt(i);
             hm.put(c,hm.getOrDefault(c,0)+1);
         }
