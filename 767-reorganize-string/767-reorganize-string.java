@@ -5,21 +5,25 @@ class Solution {
         
         
         //create map for character and frequncy;
-        HashMap<Character,Integer> hm = new HashMap();
+        int[] hm = new int[256];
+        
         for(int i = 0 ; i < n ; i++){
             char c = s.charAt(i);
-            hm.put(c,hm.getOrDefault(c,0)+1);
+            hm[(int)c]++;
         }
         
         //create priority queue or characters;
         Comparator<Character> comp = (c1,c2)->{         
-                return hm.get(c2) - hm.get(c1);            
+                return hm[(int)c2] - hm[(int)c1];            
         };
         Queue<Character> q = new PriorityQueue(comp);
         
         //add mapped characters to queue;
-        for(char c : hm.keySet()){
-            q.add(c);
+        for(int i = 0 ; i < 256 ; i++){
+            if(hm[i] > 0){
+                q.add((char)i);
+            }
+            
         }
         
         //reorganize
@@ -28,23 +32,23 @@ class Solution {
         //base case
         char blocked = q.remove();
         ans+=blocked;
-        hm.put(blocked,hm.get(blocked)-1);
+        hm[blocked]--;
         
         
         while(q.size() > 0){
             char temp = q.remove();
             
-            if(hm.get(blocked) > 0){
+            if(hm[blocked] > 0){
             q.add(blocked);    
             }
             
             blocked = temp;
             ans+=blocked;
-            hm.put(blocked,hm.get(blocked)-1);            
+            hm[blocked]--;            
         }
         
         
-        if(q.size() == 0 && hm.get(blocked) > 0){
+        if(q.size() == 0 && hm[blocked] > 0){
             return "";
         }
         
