@@ -9,12 +9,12 @@ class Solution {
         
         for(int i = 0 ; i < n ; i++){
             char c = s.charAt(i);
-            hm[(int)c]++;
+            hm[c]++;
         }
         
         //create priority queue or characters;
         Comparator<Character> comp = (c1,c2)->{         
-                return hm[(int)c2] - hm[(int)c1];            
+                return hm[c2] - hm[c1];            
         };
         Queue<Character> q = new PriorityQueue(comp);
         
