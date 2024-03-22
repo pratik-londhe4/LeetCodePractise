@@ -14,11 +14,12 @@ class Solution {
         int length = s.length();
         
         for(int i = 0 ; i < length; i++){
-            if(i+1 < s.length() && map.get(s.charAt(i)) < map.get(s.charAt(i+1))){
-                number-=map.get(s.charAt(i));
+            char first = s.charAt(i);
+            if(i+1 < s.length() && map.get(first) < map.get(s.charAt(i+1))){
+                number-=map.get(first);
             }
               else{
-                   number+=map.get(s.charAt(i));
+                   number+=map.get(first);
               }
             
            
