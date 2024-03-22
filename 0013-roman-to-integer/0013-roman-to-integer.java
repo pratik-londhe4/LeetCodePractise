@@ -11,8 +11,9 @@ class Solution {
         map.put('M', 1000);
         
         int number = 0;
+        int length = s.length();
         
-        for(int i = 0 ; i < s.length(); i++){
+        for(int i = 0 ; i < length; i++){
             if(i+1 < s.length() && map.get(s.charAt(i)) < map.get(s.charAt(i+1))){
                 number-=map.get(s.charAt(i));
             }
