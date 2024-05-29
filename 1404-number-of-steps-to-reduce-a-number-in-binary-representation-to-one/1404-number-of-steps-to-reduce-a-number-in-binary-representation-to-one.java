@@ -5,7 +5,6 @@ class Solution {
         
         while(!s.equals("1") ){
             int i = s.length()-1;
-             System.out.println(s);
             if(s.charAt(i)  == '0'){
                 s = s.substring(0,i);
             }else {
